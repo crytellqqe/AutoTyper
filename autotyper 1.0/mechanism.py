@@ -80,29 +80,29 @@ def template_management():
         clear()
 
         if choice == "меню":
-                clear()
                 menu()
-                break
+                
+                return
 
         elif choice == "добавить":
             while True:
+                clear()
+
                 print("Чтобы вернуться в меню, введите: меню")
+                print("")
+                print("Ваши шаблоны:")
+                print("")
+                templates()
                 print("")
                 print("Введите ваш шаблон:")
 
                 text = input()
                 if text.lower() == "меню":
-                    choice = "меню"
-
-                    clear()
                     menu()
                     
-                    break
+                    return
 
-                print("Ваши шаблоны:")
-                print("")
-                templates()
-                print("")
+                clear()
                 print("Чтобы вернуться в меню, введите: меню")
                 print("")
                 print("На какое место его поставить?")
@@ -110,15 +110,18 @@ def template_management():
                 a = input()
 
                 if a.lower() == "меню":
-                    clear()
                     menu()
-                    break
+
+                    return
+
                 else:
                     while True:
                         try:
                             a = int(a) - 1
+
                             break
                         except:
+                            clear()
                             print("Ваши шаблоны:")
                             print("")
                             templates()
@@ -131,9 +134,10 @@ def template_management():
 
                             a = input()
 
-                            if a == "меню":
-                                clear()
+                            if a.lower() == "меню":
                                 menu()
+
+                                return
 
                 texts.insert(a, text)
 
@@ -143,6 +147,13 @@ def template_management():
                 print("")
                 templates()
                 print("")
+                print("Вернуться в меню или добавить еще один? меню/что угодно")
+
+                end = input().lower()
+                if end == "меню":
+                    menu()
+
+                    return
 
         elif choice == "удалить":
             print("Ваши шаблоны:")

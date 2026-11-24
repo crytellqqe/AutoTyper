@@ -73,74 +73,74 @@ def add_or_delete():
     print("")
     print("Чтобы вернуться в меню, введите: меню")
     choice = input().lower()
-    if choice == "меню":
-        clear()
-        menu()
 
     while True:
         clear()
 
-        if choice == "добавить":
-            print("Введите ваш шаблон:")
-            text = input()
-            print("На какое место его поставить?")
-            print("Ваши шаблоны:")
-            print("")
-            templates()
-            print("")
-            print("Чтобы вернуться в меню, введите: меню")
-            print("")
-
-            a = input()
-
-            if a == "меню":
+        if choice == "меню":
                 clear()
                 menu()
                 break
-            else:
-                while True:
-                    try:
-                        a = int(a) - 1
-                        break
-                    except:
-                        print("Ваши шаблоны:")
-                        print("")
-                        templates()
-                        print("")
-                        print("Вы ввели не число!")
-                        print("Так на какое место его поставить?")
-                        print("")
-                        print("Чтобы вернуться в меню, введите: меню")
-                        print("")
 
-                        a = input()
-
-                        if a == "меню":
-                            clear()
-                            menu()
-
-            texts.insert(a, text)
-
-            clear()
-            
-            print("Ваши шаблоны:")
-            print("")
-            templates()
-            print("")
-            print("Чтобы вернуться в меню, введите: меню")
+        elif choice == "добавить":
             while True:
-                back = input()
-                if back == "меню":
+                print("Введите ваш шаблон:")
+                print("")
+                print("Чтобы вернуться в меню, введите: меню")
+                print("")
+
+                text = input()
+                if text.lower() == "меню":
+                    clear()
+                    menu()
+                    break
+
+                print("Ваши шаблоны:")
+                print("")
+                templates()
+                print("")
+                print("На какое место его поставить?")
+                print("")
+                print("Чтобы вернуться в меню, введите: меню")
+                print("")
+
+                a = input()
+
+                if a.lower() == "меню":
+                    clear()
                     menu()
                     break
                 else:
-                    clear()
-                    templates()
-                    print("")
-                    print("Неверный ввод, попробуйте еще раз")
-                    print("Чтобы вернуться в меню, введите: меню")
+                    while True:
+                        try:
+                            a = int(a) - 1
+                            break
+                        except:
+                            print("Ваши шаблоны:")
+                            print("")
+                            templates()
+                            print("")
+                            print("Вы ввели не число!")
+                            print("Так на какое место его поставить?")
+                            print("")
+                            print("Чтобы вернуться в меню, введите: меню")
+                            print("")
 
-            break
+                            a = input()
+
+                            if a == "меню":
+                                clear()
+                                menu()
+
+                texts.insert(a, text)
+
+                clear()
+
+                print("Ваши обновленные шаблоны:")
+                print("")
+                templates()
+                print("")
+
         elif choice == "удалить":
             print("Какой шаблон удалить?")
             print("")
@@ -182,14 +182,19 @@ def add_or_delete():
                     print("Чтобы вернуться в меню, введите: меню")
 
             break
+
         elif choice == "переместить":
             print("Какой шаблон и куда вы хотите переместить?")
 
             break
+
         else:
-            print("Добавить или удалить шаблон? Добавить/Удалить")
+            print("Добавить, удалить или переместить шаблон? Добавить/Удалить/Переместить")
             print("")
             print("Неверный ввод, попробуйте еще раз")
+            print("")
+            print("Чтобы вернуться в меню, введите: меню")
+            
             choice = input().lower()
 
 # Функция для печати один раз

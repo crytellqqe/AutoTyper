@@ -67,7 +67,7 @@ def f10_templates():
 def template_management():
     clear()
     
-    global a, texts
+    global index_management, texts
     
     print("Добавить, удалить или переместить шаблон? Добавить/Удалить/Переместить")
     print("")
@@ -96,8 +96,8 @@ def template_management():
                 print("")
                 print("Введите ваш шаблон:")
 
-                text = input()
-                if text.lower() == "меню":
+                template_text = input()
+                if template_text.lower() == "меню":
                     menu()
                     
                     return
@@ -107,9 +107,9 @@ def template_management():
                 print("")
                 print("На какое место его поставить?")
 
-                a = input()
+                index_management = input()
 
-                if a.lower() == "меню":
+                if index_management.lower() == "меню":
                     menu()
 
                     return
@@ -117,10 +117,11 @@ def template_management():
                 else:
                     while True:
                         try:
-                            a = int(a) - 1
+                            index_management = int(index_management) - 1
 
                             break
-                        except:
+
+                        except ValueError:
                             clear()
                             print("Ваши шаблоны:")
                             print("")
@@ -132,14 +133,14 @@ def template_management():
                             print("Чтобы вернуться в меню, введите: меню")
                             print("")
 
-                            a = input()
+                            index_management = input()
 
-                            if a.lower() == "меню":
+                            if index_management.lower() == "меню":
                                 menu()
 
                                 return
 
-                texts.insert(a, text)
+                texts.insert(index_management, template_text)
 
                 clear()
 

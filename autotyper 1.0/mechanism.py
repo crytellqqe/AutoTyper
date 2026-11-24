@@ -70,7 +70,12 @@ def add_or_delete():
     global a, texts
     
     print("Добавить, удалить или переместить шаблон? Добавить/Удалить/Переместить")
+    print("")
+    print("Чтобы вернуться в меню, введите: меню")
     choice = input().lower()
+    if choice == "меню":
+        clear()
+        menu()
 
     while True:
         clear()
@@ -83,7 +88,37 @@ def add_or_delete():
             print("")
             templates()
             print("")
-            a = int(input()) - 1
+            print("Чтобы вернуться в меню, введите: меню")
+            print("")
+
+            a = input()
+
+            if a == "меню":
+                clear()
+                menu()
+                break
+            else:
+                while True:
+                    try:
+                        a = int(a) - 1
+                        break
+                    except:
+                        print("Ваши шаблоны:")
+                        print("")
+                        templates()
+                        print("")
+                        print("Вы ввели не число!")
+                        print("Так на какое место его поставить?")
+                        print("")
+                        print("Чтобы вернуться в меню, введите: меню")
+                        print("")
+
+                        a = input()
+
+                        if a == "меню":
+                            clear()
+                            menu()
+
             texts.insert(a, text)
 
             clear()

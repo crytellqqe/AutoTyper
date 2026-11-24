@@ -64,7 +64,7 @@ def f10_templates():
             print("Чтобы вернуться в меню, введите: меню")
 
 # Функция для добавления и удаления шаблонов
-def add_or_delete():
+def template_management():
     clear()
 
     global a, texts

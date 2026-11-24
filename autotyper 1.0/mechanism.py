@@ -66,12 +66,14 @@ def f10_templates():
 # Функция для добавления и удаления шаблонов
 def template_management():
     clear()
-
+    
     global a, texts
     
     print("Добавить, удалить или переместить шаблон? Добавить/Удалить/Переместить")
     print("")
     print("Чтобы вернуться в меню, введите: меню")
+    print("")
+
     choice = input().lower()
 
     while True:
@@ -84,25 +86,26 @@ def template_management():
 
         elif choice == "добавить":
             while True:
-                print("Введите ваш шаблон:")
-                print("")
                 print("Чтобы вернуться в меню, введите: меню")
                 print("")
+                print("Введите ваш шаблон:")
 
                 text = input()
                 if text.lower() == "меню":
+                    choice = "меню"
+
                     clear()
                     menu()
+                    
                     break
 
                 print("Ваши шаблоны:")
                 print("")
                 templates()
                 print("")
-                print("На какое место его поставить?")
-                print("")
                 print("Чтобы вернуться в меню, введите: меню")
                 print("")
+                print("На какое место его поставить?")
 
                 a = input()
 
@@ -142,26 +145,34 @@ def template_management():
                 print("")
 
         elif choice == "удалить":
-            print("Какой шаблон удалить?")
-            print("")
+            print("Ваши шаблоны:")
             templates()
-            print("")                
-            a = int(input()) - 1
-            while True:    
-                try:
-                    texts.pop(a)
+            print("")
+            print("Какой шаблон удалить?")
+            print("При вводе номера шаблона, которого нет - удалится последний")
+            print("")
+            print("Чтобы вернуться в меню, введите: меню")
+            print("")
+
+            a = input()
+
+            while True:
+                if a.lower() == "меню":
+                    clear()
+                    menu()
 
                     break
-                except IndexError:
-                    clear()
 
-                    print("У вас нет шаблона под этим номером! Попробуйте еще раз")
-                    print("Какой шаблон удалить?")
-                    print("")
-                    templates()
-                    print("")
-                    a = int(input()) - 1
-                
+                else:
+                    try:
+                        a = int(a) - 1
+                        texts.pop(a)
+
+                        break
+                    except IndexError:
+                        texts.pop()
+
+
             clear()
 
             print("Ваши шаблоны:")

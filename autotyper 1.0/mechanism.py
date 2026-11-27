@@ -159,13 +159,13 @@ def template_management():
         elif choice == "удалить":
             clear()
 
+            print("Чтобы вернуться в меню, введите: меню")
+            print("")
             print("Ваши шаблоны:")
             print("")
             templates()
             print("")
             print("Какой шаблон удалить?")
-            print("")
-            print("Чтобы вернуться в меню, введите: меню")
             print("")
 
             index_management = input()
@@ -185,24 +185,26 @@ def template_management():
 
                     except IndexError:
                         clear()
-                        
+
+                        print("Чтобы вернуться в меню, введите: меню")
+                        print("")
                         print("Ваши шаблоны:")
                         print("")
                         templates()
                         print("")
                         print("Шаблона под этим номером нет. Попробуйте еще раз")
                         print("")
-                        print("Чтобы вернуться в меню, введите: меню")
-                        print("")
-
+                        
                         index_management = input()
 
             clear()
-            print("Ваши шаблоны:")
+            print("Чтобы вернуться в меню, введите: меню")
+            print("")
+            print("Ваши обновленные шаблоны:")
             print("")
             templates()
             print("")
-            print("Чтобы вернуться в меню, введите: меню")
+            
             while True:
                 back = input()
                 if back == "меню":

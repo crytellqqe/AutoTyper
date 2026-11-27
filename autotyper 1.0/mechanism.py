@@ -3,7 +3,7 @@ import keyboard
 import os
 
 # Переменная список для шаблонов, переменная с инедксом элемента списка, переменная отвечающая за текст, который будет печататься
-texts = ["По умолчанию"]
+texts = ["По умолчанию", "XDXD"]
 x = 0
 a = 0
 
@@ -97,6 +97,7 @@ def template_management():
                 print("Введите ваш шаблон:")
 
                 template_text = input()
+
                 if template_text.lower() == "меню":
                     menu()
                     
@@ -105,17 +106,21 @@ def template_management():
                 clear()
                 print("Чтобы вернуться в меню, введите: меню")
                 print("")
+                print("Ваши шаблоны:")
+                print("")
+                templates()
+                print("")
                 print("На какое место его поставить?")
 
                 index_management = input()
 
-                if index_management.lower() == "меню":
-                    menu()
+                while True:
+                    if index_management.lower() == "меню":
+                        menu()
 
-                    return
+                        return
 
-                else:
-                    while True:
+                    else:
                         try:
                             index_management = int(index_management) - 1
 
@@ -123,6 +128,9 @@ def template_management():
 
                         except ValueError:
                             clear()
+
+                            print("Чтобы вернуться в меню, введите: меню")
+                            print("")
                             print("Ваши шаблоны:")
                             print("")
                             templates()
@@ -130,63 +138,66 @@ def template_management():
                             print("Вы ввели не число!")
                             print("Так на какое место его поставить?")
                             print("")
-                            print("Чтобы вернуться в меню, введите: меню")
-                            print("")
-
+                            
                             index_management = input()
 
-                            if index_management.lower() == "меню":
-                                menu()
+                    texts.insert(index_management, template_text)
 
-                                return
+                    clear()
+                    print("Ваши обновленные шаблоны:")
+                    print("")
+                    templates()
+                    print("")
+                    print("Вернуться в меню или добавить еще один? меню/что угодно")
 
-                texts.insert(index_management, template_text)
+                    anything = input().lower()
+                    if anything == "меню":
+                        menu()
 
-                clear()
-
-                print("Ваши обновленные шаблоны:")
-                print("")
-                templates()
-                print("")
-                print("Вернуться в меню или добавить еще один? меню/что угодно")
-
-                end = input().lower()
-                if end == "меню":
-                    menu()
-
-                    return
+                        return
 
         elif choice == "удалить":
+            clear()
+
             print("Ваши шаблоны:")
+            print("")
             templates()
             print("")
             print("Какой шаблон удалить?")
-            print("При вводе номера шаблона, которого нет - удалится последний")
             print("")
             print("Чтобы вернуться в меню, введите: меню")
             print("")
 
-            a = input()
+            index_management = input()
 
             while True:
-                if a.lower() == "меню":
-                    clear()
+                if index_management.lower() == "меню":
                     menu()
 
-                    break
+                    return
 
                 else:
                     try:
-                        a = int(a) - 1
-                        texts.pop(a)
+                        index_management = int(index_management) - 1
+                        texts.pop(index_management)
 
                         break
-                    except IndexError:
-                        texts.pop()
 
+                    except IndexError:
+                        clear()
+                        
+                        print("Ваши шаблоны:")
+                        print("")
+                        templates()
+                        print("")
+                        print("Шаблона под этим номером нет. Попробуйте еще раз")
+                        print("")
+                        print("Чтобы вернуться в меню, введите: меню")
+                        print("")
+
+                        index_management = input()
 
             clear()
-
             print("Ваши шаблоны:")
             print("")
             templates()

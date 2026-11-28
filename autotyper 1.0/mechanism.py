@@ -27,18 +27,19 @@ def menu():
     print("Печатать без остановки по кругу: F8. Для остановки зажмите DEL до выключения")
     print("")
     print("ALT + DEL для завершения программы")
+    print("")
 
 # Функция для выбора шаблона из списка
 def text_w():
     clear()
 
-    print(f"Выберите шаблон от {1} до {10}")
-
     global x
 
+    print(f"Выберите шаблон от {1} до {10}")
+    print("")
+    
     x = int(input()) - 1
 
-    print("") # Здесь позже сделать функцию для очистки консоли
     menu()
 
 # Вывод шаблонов
@@ -48,20 +49,31 @@ def templates():
 
 def f10_templates():
     clear()
+
+    print("Шаблоны")
+    print("")
     templates()
     print("")
     print("Чтобы вернуться в меню, введите: меню")
+    print("")
+
     while True:
         back = input()
+
         if back == "меню":
             menu()
-            break
+
+            return
+
         else:
             clear()
+
             templates()
             print("")
             print("Неверный ввод, попробуйте еще раз")
+            print("")
             print("Чтобы вернуться в меню, введите: меню")
+            print("")
 
 # Функция для добавления и удаления шаблонов
 def template_management():
@@ -95,6 +107,7 @@ def template_management():
                 templates()
                 print("")
                 print("Введите ваш шаблон:")
+                print("")
 
                 template_text = input()
 
@@ -111,6 +124,7 @@ def template_management():
                 templates()
                 print("")
                 print("На какое место его поставить?")
+                print("")
 
                 index_management = input()
 
@@ -149,6 +163,7 @@ def template_management():
                     templates()
                     print("")
                     print("Вернуться в меню или добавить еще один? меню/что угодно")
+                    print("")
 
                     anything = input().lower()
                     if anything == "меню":
@@ -198,6 +213,20 @@ def template_management():
                             
                             index_management = input()
 
+                        except ValueError:
+                            clear()
+
+                            print("Чтобы вернуться в меню, введите: меню")
+                            print("")
+                            print("Ваши шаблоны:")
+                            print("")
+                            templates()
+                            print("")
+                            print("Вы ввели не число. Попробуйте еще раз")
+                            print("")
+
+                            index_management = input()
+
                 clear()
                 print("Чтобы вернуться в меню, введите: меню")
                 print("")
@@ -206,6 +235,7 @@ def template_management():
                 templates()
                 print("")
                 print("Удалить еще один? меню/что угодно")
+                print("")
                 
                 anything = input()
                 if anything == "меню":
@@ -226,6 +256,7 @@ def template_management():
             print("Неверный ввод, попробуйте еще раз")
             print("")
             print("Чтобы вернуться в меню, введите: меню")
+            print("")
             
             choice = input().lower()
 

@@ -157,69 +157,64 @@ def template_management():
                         return
 
         elif choice == "удалить":
-            clear()
-
-            print("Чтобы вернуться в меню, введите: меню")
-            print("")
-            print("Ваши шаблоны:")
-            print("")
-            templates()
-            print("")
-            print("Какой шаблон удалить?")
-            print("")
-
-            index_management = input()
-
             while True:
-                if index_management.lower() == "меню":
+                clear()
+
+                print("Чтобы вернуться в меню, введите: меню")
+                print("")
+                print("Ваши шаблоны:")
+                print("")
+                templates()
+                print("")
+                print("Какой шаблон удалить?")
+                print("")
+
+                index_management = input()
+
+                while True:
+                    if index_management.lower() == "меню":
+                        menu()
+
+                        return
+
+                    else:
+                        try:
+                            index_management = int(index_management) - 1
+                            texts.pop(index_management)
+
+                            break
+
+                        except IndexError:
+                            clear()
+
+                            print("Чтобы вернуться в меню, введите: меню")
+                            print("")
+                            print("Ваши шаблоны:")
+                            print("")
+                            templates()
+                            print("")
+                            print("Шаблона под этим номером нет. Попробуйте еще раз")
+                            print("")
+                            
+                            index_management = input()
+
+                clear()
+                print("Чтобы вернуться в меню, введите: меню")
+                print("")
+                print("Ваши обновленные шаблоны:")
+                print("")
+                templates()
+                print("")
+                
+                anything = input()
+                if anything == "меню":
                     menu()
 
                     return
 
-                else:
-                    try:
-                        index_management = int(index_management) - 1
-                        texts.pop(index_management)
-
-                        break
-
-                    except IndexError:
-                        clear()
-
-                        print("Чтобы вернуться в меню, введите: меню")
-                        print("")
-                        print("Ваши шаблоны:")
-                        print("")
-                        templates()
-                        print("")
-                        print("Шаблона под этим номером нет. Попробуйте еще раз")
-                        print("")
-                        
-                        index_management = input()
-
-            clear()
-            print("Чтобы вернуться в меню, введите: меню")
-            print("")
-            print("Ваши обновленные шаблоны:")
-            print("")
-            templates()
-            print("")
-            
-            while True:
-                back = input()
-                if back == "меню":
-                    menu()
-                    break
-                else:
-                    clear()
-                    templates()
-                    print("")
-                    print("Неверный ввод, попробуйте еще раз")
-                    print("Чтобы вернуться в меню, введите: меню")
-
-            break
-
         elif choice == "переместить":
+            clear()
+            
             print("Какой шаблон и куда вы хотите переместить?")
 
             break

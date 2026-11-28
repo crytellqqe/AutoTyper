@@ -3,10 +3,10 @@ import keyboard
 import os
 
 # Переменная список для шаблонов, переменная с инедксом элемента списка, переменная отвечающая за текст, который будет печататься
-texts = ["По умолчанию", "XDXD"]
-x = 0
-a = 0
+templates = ["По умолчанию", "XDXD"]
+template_index = 0
 
+# Очистка консоли
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -17,7 +17,7 @@ def menu():
     print("***Autotyper by crytellqqe***")
     print("                  version: not released")
     print("")
-    print(f"Выбранный шаблон: {texts[x]}")
+    print(f"Выбранный шаблон: {templates[x]}")
     print("")
     print("Выбрать шаблон: F9")
     print("Вывести список шаблонов: F10")
@@ -33,34 +33,34 @@ def menu():
 def text_w():
     clear()
 
-    global x
+    global template_index
 
     print(f"Выберите шаблон от {1} до {10}")
     print("")
     
-    x = int(input()) - 1
+    template_index = int(input()) - 1
 
     menu()
 
 # Вывод шаблонов
-def templates():
-    for i, items in enumerate(texts, start=1):
+def show_templates():
+    for i, items in enumerate(templates, start=1):
         print(i, items)
 
 def f10_templates():
     clear()
 
-    print("Шаблоны")
+    print("Шаблоны:")
     print("")
-    templates()
+    show_templates()
     print("")
     print("Чтобы вернуться в меню, введите: меню")
     print("")
 
     while True:
-        back = input()
+        anything = input()
 
-        if back == "меню":
+        if anything == "меню":
             menu()
 
             return
@@ -68,7 +68,7 @@ def f10_templates():
         else:
             clear()
 
-            templates()
+            show_templates()
             print("")
             print("Неверный ввод, попробуйте еще раз")
             print("")
@@ -79,7 +79,7 @@ def f10_templates():
 def template_management():
     clear()
     
-    global index_management, texts
+    global index_management, templates
     
     print("Добавить, удалить или переместить шаблон? Добавить/Удалить/Переместить")
     print("")
@@ -104,7 +104,7 @@ def template_management():
                 print("")
                 print("Ваши шаблоны:")
                 print("")
-                templates()
+                show_templates()
                 print("")
                 print("Введите ваш шаблон:")
                 print("")
@@ -121,7 +121,7 @@ def template_management():
                 print("")
                 print("Ваши шаблоны:")
                 print("")
-                templates()
+                show_templates()
                 print("")
                 print("На какое место его поставить?")
                 print("")
@@ -147,7 +147,7 @@ def template_management():
                             print("")
                             print("Ваши шаблоны:")
                             print("")
-                            templates()
+                            show_templates()
                             print("")
                             print("Вы ввели не число!")
                             print("Так на какое место его поставить?")
@@ -155,12 +155,12 @@ def template_management():
                             
                             index_management = input()
 
-                    texts.insert(index_management, template_text)
+                    templates.insert(index_management, template_text)
 
                     clear()
                     print("Ваши обновленные шаблоны:")
                     print("")
-                    templates()
+                    show_templates()
                     print("")
                     print("Вернуться в меню или добавить еще один? меню/что угодно")
                     print("")
@@ -179,7 +179,7 @@ def template_management():
                 print("")
                 print("Ваши шаблоны:")
                 print("")
-                templates()
+                show_templates()
                 print("")
                 print("Какой шаблон удалить?")
                 print("")
@@ -195,7 +195,7 @@ def template_management():
                     else:
                         try:
                             index_management = int(index_management) - 1
-                            texts.pop(index_management)
+                            templates.pop(index_management)
 
                             break
 
@@ -206,7 +206,7 @@ def template_management():
                             print("")
                             print("Ваши шаблоны:")
                             print("")
-                            templates()
+                            show_templates()
                             print("")
                             print("Шаблона под этим номером нет. Попробуйте еще раз")
                             print("")
@@ -220,7 +220,7 @@ def template_management():
                             print("")
                             print("Ваши шаблоны:")
                             print("")
-                            templates()
+                            show_templates()
                             print("")
                             print("Вы ввели не число. Попробуйте еще раз")
                             print("")
@@ -232,7 +232,7 @@ def template_management():
                 print("")
                 print("Ваши обновленные шаблоны:")
                 print("")
-                templates()
+                show_templates()
                 print("")
                 print("Удалить еще один? меню/что угодно")
                 print("")
@@ -264,7 +264,7 @@ def template_management():
 def typer():
     time.sleep(0.05)
 
-    keyboard.write(texts[x], delay=0.025)
+    keyboard.write(templates[x], delay=0.025)
     keyboard.press_and_release('enter')
 
 # Функция для печати без остановки (по кругу)
@@ -272,7 +272,7 @@ def typer_scr():
     while True:
         time.sleep(0.05)
 
-        keyboard.write(texts[x], delay=0.025)
+        keyboard.write(templates[x], delay=0.025)
         keyboard.press_and_release('enter')
 
         if keyboard.is_pressed('del'):

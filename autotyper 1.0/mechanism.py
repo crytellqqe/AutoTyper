@@ -205,6 +205,7 @@ def template_management():
                 print("")
                 templates()
                 print("")
+                print("Удалить еще один? меню/что угодно")
                 
                 anything = input()
                 if anything == "меню":
@@ -214,7 +215,7 @@ def template_management():
 
         elif choice == "переместить":
             clear()
-            
+
             print("Какой шаблон и куда вы хотите переместить?")
 
             break

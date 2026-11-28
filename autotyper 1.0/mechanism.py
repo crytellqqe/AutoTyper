@@ -17,7 +17,7 @@ def menu():
     print("***Autotyper by crytellqqe***")
     print("                  version: not released")
     print("")
-    print(f"Выбранный шаблон: {templates[x]}")
+    print(f"Выбранный шаблон: {templates[template_index]}")
     print("")
     print("Выбрать шаблон: F9")
     print("Вывести список шаблонов: F10")
@@ -264,7 +264,7 @@ def template_management():
 def typer():
     time.sleep(0.05)
 
-    keyboard.write(templates[x], delay=0.025)
+    keyboard.write(templates[template_index], delay=0.025)
     keyboard.press_and_release('enter')
 
 # Функция для печати без остановки (по кругу)
@@ -272,7 +272,7 @@ def typer_scr():
     while True:
         time.sleep(0.05)
 
-        keyboard.write(templates[x], delay=0.025)
+        keyboard.write(templates[template_index], delay=0.025)
         keyboard.press_and_release('enter')
 
         if keyboard.is_pressed('del'):

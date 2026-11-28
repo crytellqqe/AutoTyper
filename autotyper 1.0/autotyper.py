@@ -1,4 +1,4 @@
-from mechanism import menu, text_w, templates, f10_templates, template_management, typer, typer_scr
+from mechanism import menu, text_w, f10_templates, template_management, typer, typer_scr
 import keyboard
 
 # Запуск скрипта
